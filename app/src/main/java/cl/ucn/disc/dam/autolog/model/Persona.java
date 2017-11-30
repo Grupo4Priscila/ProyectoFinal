@@ -1,5 +1,7 @@
 package cl.ucn.disc.dam.autolog.model;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -61,4 +63,10 @@ public final class Persona {
     @Getter
     @Setter
     String cargo;
+    /**
+     * Lista de vehiculos que posee la personas
+     */
+    @Getter
+    @Setter
+    List<Vehiculo> vehiculos;
 }

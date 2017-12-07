@@ -1,7 +1,6 @@
 package cl.ucn.disc.dam.autolog.model;
 
 import com.raizlabs.android.dbflow.annotation.Table;
-
 import cl.ucn.disc.dam.autolog.dao.MyDatabase;
 import lombok.Getter;
 import lombok.Setter;

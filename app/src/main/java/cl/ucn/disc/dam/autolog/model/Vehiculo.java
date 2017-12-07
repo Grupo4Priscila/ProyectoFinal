@@ -1,9 +1,10 @@
 package cl.ucn.disc.dam.autolog.model;
 
 import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
-import com.raizlabs.android.dbflow.structure.BaseModel;
+
 
 import cl.ucn.disc.dam.autolog.dao.MyDatabase;
 import lombok.Getter;
@@ -13,11 +14,12 @@ import lombok.Setter;
  * Created by RaosF on 30-11-2017.
  */
 @Table(database = MyDatabase.class)
-public final class Vehiculo extends BaseModel {
+public final class Vehiculo{
 
     /**
      * Persona responsable;
      */
+    @ForeignKey(saveForeignKeyModel = true)
     @Getter
     @Setter
     @Column

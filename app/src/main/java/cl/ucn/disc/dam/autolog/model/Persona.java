@@ -2,23 +2,27 @@ package cl.ucn.disc.dam.autolog.model;
 
 import java.util.List;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 /**
  * Created by PriscilaGonzalez on 30-11-2017.
  */
+@Builder
 public final class Persona {
 
     /**
      * Rut (identificador) de la persona
      */
+    @Setter
     @Getter
     String rut;
 
     /**
      *Nombre y apellido de la persona
      */
+    @Setter
     @Getter
     String nombre;
     /**

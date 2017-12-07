@@ -1,7 +1,13 @@
 package cl.ucn.disc.dam.autolog.model;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 import java.util.List;
 
+import cl.ucn.disc.dam.autolog.dao.MyDatabase;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,9 +16,9 @@ import lombok.Setter;
  * Created by PriscilaGonzalez on 30-11-2017.
  */
 
-@Table(datebase = MyDatabase.class, name = "persona")
+@Table(database = MyDatabase.class)
 //@Builder
-public final class Persona {
+public final class Persona extends BaseModel{
 
     /**
      * Rut (identificador) de la persona

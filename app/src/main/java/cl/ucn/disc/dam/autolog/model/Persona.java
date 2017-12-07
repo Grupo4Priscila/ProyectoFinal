@@ -9,12 +9,16 @@ import lombok.Setter;
 /**
  * Created by PriscilaGonzalez on 30-11-2017.
  */
-@Builder
+
+@Table(datebase = MyDatabase.class, name = "persona")
+//@Builder
 public final class Persona {
 
     /**
      * Rut (identificador) de la persona
      */
+    @PrimaryKey
+    @Column
     @Setter
     @Getter
     String rut;
@@ -24,6 +28,7 @@ public final class Persona {
      */
     @Setter
     @Getter
+    @Column
     String nombre;
     /**
      * Correo electronico de la personas

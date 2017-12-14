@@ -9,7 +9,7 @@ import lombok.Setter;
 /**
  * Created by PriscilaGonzalez on 30-11-2017.
  */
-@Builder
+
 public final class Persona {
 
     /**

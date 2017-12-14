@@ -8,7 +8,10 @@ logger.lifecycle("Using Buildtime: ${BUILD_DATE_TIME}")
 def VERSION_NAME = "a"
 
 apply plugin: 'com.android.application'
+
+// Version Dbflow
 def dbflow_version = "4.1.2"
+
 android {
     compileSdkVersion 26
     buildToolsVersion "27.0.1"
@@ -73,16 +76,16 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.16.18'
     compile 'org.glassfish:javax.annotation:10.0-b28'
 
-<<<<<<< HEAD
+
     //Dbflow
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
 
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
-=======
+
     testAnnotationProcessor 'org.projectlombok:lombok:1.16.18'
     testImplementation 'org.projectlombok:lombok:1.16.18'
->>>>>>> 4dbda7fe24382f1d577ba7205467b60b3e99fea3
+
 
 
 }

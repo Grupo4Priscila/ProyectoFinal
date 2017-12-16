@@ -15,10 +15,9 @@ public class Registro {
     /**
      * Identificador de la clase Registro
      * reg es autoincrementable
-     * TODO: hacer la primarykey autoincrment @primarykey(autoIncrement=true)****
      */
 
-    @PrimaryKey
+    @PrimaryKey(autoincrement = true)
     @Getter
     int reg;
     /**

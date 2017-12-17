@@ -36,6 +36,8 @@ public final class Vehiculo{
     @Column
     String marca;
 
+
+
     @Getter
     @Setter
     @Column
@@ -55,6 +57,16 @@ public final class Vehiculo{
     @Setter
     @Column
     String descripcion;
+
+    public Vehiculo(Persona responsable, String patente, String marca, String color, String modelo, int anio, String descripcion) {
+        this.responsable = responsable;
+        this.patente = patente;
+        this.marca = marca;
+        this.color = color;
+        this.modelo = modelo;
+        this.anio = anio;
+        this.descripcion = descripcion;
+    }
 
 }
 

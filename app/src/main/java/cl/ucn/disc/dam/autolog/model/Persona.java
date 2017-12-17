@@ -96,6 +96,19 @@ public final class Persona extends BaseModel{
     @Setter
     List<Vehiculo> vehiculos;
 
+    public Persona(String rut, String nombre, String correo, int telefono, int anexo, String unidad, String oficina, String tipo, String cargo, List<Vehiculo> vehiculos) {
+        this.rut = rut;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.anexo = anexo;
+        this.unidad = unidad;
+        this.oficina = oficina;
+        this.tipo = tipo;
+        this.cargo = cargo;
+        this.vehiculos = vehiculos;
+    }
+
     @OneToMany(methods = OneToMany.Method.ALL, variableName = "vehiculos")
     public List<Vehiculo> oneToManyVehiculos(){
         if(vehiculos == null){

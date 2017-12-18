@@ -26,7 +26,7 @@ public class Adaptador extends BaseAdapter {
     private final Context context;
     private final List<Vehiculo> vehiculos = new ArrayList<>();
 
-    public Adaptador(final Context context) {
+    public Adaptador(final Context context, ArrayList<Vehiculo> lista) {
         this.context = context;
     }
 
@@ -125,10 +125,10 @@ public class Adaptador extends BaseAdapter {
 
 
         ViewHolder(final View view) {
-            //this.patente = view.findViewById(R.id.patente);
-            //this.nombre = view.findViewById(R.id.responsable);
-            //this.cargo = view.findViewById(R.id.cargoResponsable);
-            //this.marca = view.findViewById(R.id.marcaVehiculo);
+            this.patente = view.findViewById(R.id.patente);
+            this.nombre = view.findViewById(R.id.responsable);
+            this.cargo = view.findViewById(R.id.cargoResponsable);
+            this.marca = view.findViewById(R.id.marcaVehiculo);
         }
 
     }

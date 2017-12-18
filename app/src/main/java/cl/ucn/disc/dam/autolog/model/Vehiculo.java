@@ -58,7 +58,7 @@ public final class Vehiculo{
     @Column
     String descripcion;
 
-    public Vehiculo(Persona responsable, String patente, String marca, String color, String modelo, int anio, String descripcion) {
+  /*  public Vehiculo(Persona responsable, String patente, String marca, String color, String modelo, int anio, String descripcion) {
         this.responsable = responsable;
         this.patente = patente;
         this.marca = marca;
@@ -67,7 +67,7 @@ public final class Vehiculo{
         this.anio = anio;
         this.descripcion = descripcion;
     }
-
+*/
 }
 
 

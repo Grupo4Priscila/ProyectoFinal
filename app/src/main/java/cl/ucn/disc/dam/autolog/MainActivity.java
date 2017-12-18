@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         Vehiculo v1 = new Vehiculo();// new Vehiculo(p1,"bbbb00", "toyota", "azul", "caminon", 2017, "esta chocado");
         v1.setResponsable(p1);
-        v1.setPatente("bbbb00");
+        v1.setPatente("BB-BB-00");
         v1.setMarca("toyota");
         v1.setColor("azul");
         v1.setModelo("camioneta");

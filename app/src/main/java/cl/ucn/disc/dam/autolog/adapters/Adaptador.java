@@ -23,11 +23,26 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Adaptador extends BaseAdapter {
 
-    private final Context context;
-    private final List<Vehiculo> vehiculos = new ArrayList<>();
+    Context context;
+    List<Vehiculo> vehiculos;
 
-    public Adaptador(final Context context, ArrayList<Vehiculo> lista) {
+    static class ViewHolder {
+        private TextView patente ;
+        private TextView nombre ;
+        private TextView cargo ;
+        private TextView marca ;
+
+        public ViewHolder(View vista){
+            patente = (TextView) vista.findViewById(R.id.patente);
+            nombre = (TextView) vista.findViewById(R.id.responsable);
+            cargo = (TextView) vista.findViewById(R.id.cargoResponsable);
+            marca = (TextView) vista.findViewById(R.id.marcaVehiculo);
+        }
+    }
+
+    public Adaptador(final Context context, List<Vehiculo> lista) {
         this.context = context;
+        vehiculos = lista;
     }
 
     /**
@@ -48,7 +63,7 @@ public class Adaptador extends BaseAdapter {
      * @return The data at the specified position.
      */
     @Override
-    public Vehiculo getItem(int position) {
+    public Object getItem(int position) {
         return vehiculos.get(position);
     }
 
@@ -83,53 +98,30 @@ public class Adaptador extends BaseAdapter {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        final ViewHolder viewHolder;
-        final View view;
+        ViewHolder holder;
+        View vista = convertView;
 
-        if (convertView == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.patente, parent, false);
-            viewHolder = new ViewHolder(view);
-            view.setTag(viewHolder);
-        } else {
-            view = convertView;
-            viewHolder = (ViewHolder) convertView.getTag();
+        if(vista == null) {
+            LayoutInflater inflate = LayoutInflater.from(context);
+            vista = inflate.inflate(R.layout.patente, null);
+            holder = new ViewHolder(vista);
+            vista.setTag(holder);
+        }
+        else{
+            holder = (ViewHolder) vista.getTag();
         }
 
-        final Vehiculo vehiculo = this.getItem(position);
-        if (vehiculo != null) {
+        Vehiculo objeto = vehiculos.get(position);
 
-            viewHolder.patente.setText(vehiculo.getPatente());
-            viewHolder.nombre.setText(vehiculo.getResponsable().getNombre());
-
-            viewHolder.cargo.setText(vehiculo.getResponsable().getCargo());
-            viewHolder.marca.setText(vehiculo.getMarca());
+        holder.patente.setText(objeto.getPatente());
+        holder.nombre.setText(objeto.getResponsable().getNombre());
+        holder.cargo.setText(objeto.getResponsable().getCargo());
+        holder.marca.setText(objeto.getMarca());
 
 
+        return vista;
 
-        }
-
-
-
-        return view;
     }
 
-    /**
-     * Viewholder pattern
-     */
-    private static class ViewHolder {
-        TextView patente;
-        TextView nombre;
-        TextView cargo;
-        TextView marca;
 
-
-
-        ViewHolder(final View view) {
-            this.patente = view.findViewById(R.id.patente);
-            this.nombre = view.findViewById(R.id.responsable);
-            this.cargo = view.findViewById(R.id.cargoResponsable);
-            this.marca = view.findViewById(R.id.marcaVehiculo);
-        }
-
-    }
 }

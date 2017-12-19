@@ -51,7 +51,6 @@ android {
     }
 }
 
-
 // File output name
 android.applicationVariants.all { variant ->
     variant.outputs.all {
@@ -83,7 +82,6 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.16.18'
     compile 'org.glassfish:javax.annotation:10.0-b28'
 
-
     //Dbflow
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
 
@@ -92,7 +90,6 @@ dependencies {
 
     testAnnotationProcessor 'org.projectlombok:lombok:1.16.18'
     testImplementation 'org.projectlombok:lombok:1.16.18'
-
 
 
 }

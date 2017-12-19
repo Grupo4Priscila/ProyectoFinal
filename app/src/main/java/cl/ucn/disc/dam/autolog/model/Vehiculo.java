@@ -6,6 +6,8 @@ import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 
 
+import java.io.Serializable;
+
 import cl.ucn.disc.dam.autolog.dao.MyDatabase;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +16,7 @@ import lombok.Setter;
  * Created by RaosF on 30-11-2017.
  */
 @Table(database = MyDatabase.class)
-public final class Vehiculo{
+public final class Vehiculo implements Serializable {
 
     /**
      * Persona responsable;

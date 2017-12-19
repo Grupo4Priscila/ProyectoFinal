@@ -1,28 +1,28 @@
-package cl.ucn.disc.dam.autolog;
+package cl.ucn.disc.dam.autolog.activity;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import cl.ucn.disc.dam.autolog.R;
 import cl.ucn.disc.dam.autolog.adapters.Adaptador;
 import cl.ucn.disc.dam.autolog.model.Persona;
 import cl.ucn.disc.dam.autolog.model.Vehiculo;
 
 public class MainActivity extends AppCompatActivity {
-//TODO: termianr el showpopup
-//    TODO: arreglar popup_datos.xml poner el showPopup_datos en marca (solo prueba)
-// https://stackoverflow.com/questions/38987442/how-to-make-a-simple-android-popup-window
-// el final de la pag
 
     ListView listaVehiculos;
     ArrayList<Vehiculo> lista;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         Vehiculo v1 = new Vehiculo();// new Vehiculo(p1,"bbbb00", "toyota", "azul", "caminon", 2017, "esta chocado");
         v1.setResponsable(p1);
-        v1.setPatente("bbbb00");
+        v1.setPatente("BB-BB-00");
         v1.setMarca("toyota");
         v1.setColor("azul");
         v1.setModelo("camioneta");
@@ -83,40 +83,16 @@ public class MainActivity extends AppCompatActivity {
 
         listaVehiculos.setAdapter(adaptador);
 
-    }
-
-
-
-
-    public void ShowPopup_datos(View view) {
-
-   /*     // get a reference to the already created main layout
-       // LinearLayout mainLayout = (LinearLayout) findViewById(R.id.patente);
-
-        // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_datos, null);
-
-        // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
-        boolean focusable = true; // lets taps outside the popup also dismiss it
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
-
-        // show the popup window
-        popupWindow.showAtLocation(mainLayout, Gravity.CENTER, 0, 0);
-
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
+        listaVehiculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                popupWindow.dismiss();
-                return true;
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Vehiculo vehiculo_popup = (Vehiculo) parent.getItemAtPosition(position);
+
+                Intent Siguiente = new Intent(getApplicationContext(),PopActivity.class);
+                Siguiente.putExtra("auto", vehiculo_popup);
+                startActivity(Siguiente);
             }
         });
-*/
+
     }
-
-
-
 }

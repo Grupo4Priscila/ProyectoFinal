@@ -8,7 +8,11 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+<<<<<<< HEAD:app/src/main/java/cl/ucn/disc/dam/autolog/activity/MainActivity.java
 import android.widget.AdapterView;
+=======
+import android.widget.Button;
+>>>>>>> 0dd1ebfdf845e0df3660ded370626b157e4b9651:app/src/main/java/cl/ucn/disc/dam/autolog/MainActivity.java
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -24,13 +28,15 @@ import cl.ucn.disc.dam.autolog.model.Vehiculo;
 
 public class MainActivity extends AppCompatActivity {
 
-    ListView listaVehiculos;
-    ArrayList<Vehiculo> lista;
+    Button registrar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD:app/src/main/java/cl/ucn/disc/dam/autolog/activity/MainActivity.java
         listaVehiculos = (ListView) findViewById(R.id.listapatente);
         lista = new ArrayList<Vehiculo>();
 
@@ -78,11 +84,20 @@ public class MainActivity extends AppCompatActivity {
         lista.add(v1);
 
 
+=======
+        registrar = (Button) findViewById(R.id.registrarvehiculo);
+        registrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registrar = new Intent(MainActivity.this, ActivityListPatente.class);
+                startActivity(registrar);
+            }
+        });
+>>>>>>> 0dd1ebfdf845e0df3660ded370626b157e4b9651:app/src/main/java/cl/ucn/disc/dam/autolog/MainActivity.java
 
-        Adaptador adaptador = new Adaptador(getApplicationContext(),lista);
 
-        listaVehiculos.setAdapter(adaptador);
 
+<<<<<<< HEAD:app/src/main/java/cl/ucn/disc/dam/autolog/activity/MainActivity.java
         listaVehiculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -96,3 +111,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 }
+=======
+    }
+
+
+
+    }
+
+
+
+
+>>>>>>> 0dd1ebfdf845e0df3660ded370626b157e4b9651:app/src/main/java/cl/ucn/disc/dam/autolog/MainActivity.java

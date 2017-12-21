@@ -8,6 +8,7 @@ import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.BaseModel;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import cl.ucn.disc.dam.autolog.dao.MyDatabase;
@@ -21,7 +22,7 @@ import lombok.Setter;
 
 @Table(database = MyDatabase.class)
 //@Builder
-public final class Persona extends BaseModel{
+public final class Persona extends BaseModel implements Serializable {
 
     //TODO:: corregir la lista de vehiculos one to many!!!!
     /**

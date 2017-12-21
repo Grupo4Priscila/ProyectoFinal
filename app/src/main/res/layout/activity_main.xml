@@ -6,6 +6,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+<<<<<<< HEAD
+    tools:context="cl.ucn.disc.dam.autolog.activity.MainActivity">
+
+    <ListView
+        android:id="@+id/listapatente"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
+=======
     tools:context="cl.ucn.disc.dam.autolog.MainActivity">
 
     <ImageView
@@ -97,3 +106,4 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
 </android.support.constraint.ConstraintLayout>
+>>>>>>> 0dd1ebfdf845e0df3660ded370626b157e4b9651

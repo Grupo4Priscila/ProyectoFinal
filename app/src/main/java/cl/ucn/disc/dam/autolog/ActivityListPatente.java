@@ -1,12 +1,16 @@
 package cl.ucn.disc.dam.autolog;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import cl.ucn.disc.dam.autolog.activity.PopActivity;
 import cl.ucn.disc.dam.autolog.adapters.Adaptador;
 import cl.ucn.disc.dam.autolog.model.Persona;
 import cl.ucn.disc.dam.autolog.model.Vehiculo;
@@ -20,9 +24,8 @@ public class ActivityListPatente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_patente);
 
-        listaVehiculos = (ListView) findViewById(R.id.listapatente);
+        listaVehiculos = (ListView) findViewById(R.id.listpatente);
         lista = new ArrayList<Vehiculo>();
-
 
         Persona p1 = new Persona();//("18312277-0","Priscila Gonzalez","pga020@alumnos.ucn.cl",74690535, 052,"c","off","y005","director",null  );
 
@@ -57,7 +60,6 @@ public class ActivityListPatente extends AppCompatActivity {
         v1.setAnio(2017);
         v1.setDescripcion("esta chocado");
 
-
         lista.add(v1);
         lista.add(v1);
         lista.add(v1);
@@ -65,11 +67,20 @@ public class ActivityListPatente extends AppCompatActivity {
         lista.add(v1);
         lista.add(v1);
         lista.add(v1);
-
-
 
         Adaptador adaptador = new Adaptador(getApplicationContext(),lista);
 
         listaVehiculos.setAdapter(adaptador);
+        listaVehiculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Vehiculo vehiculo_popup = (Vehiculo) parent.getItemAtPosition(position);
+
+                Intent Siguiente = new Intent(getApplicationContext(),PopActivity.class);
+                Siguiente.putExtra("auto", vehiculo_popup);
+                startActivity(Siguiente);
+            }
+        });
+
     }
 }

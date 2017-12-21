@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/AutoLog.iml" filepath="$PROJECT_DIR$/AutoLog.iml" />
-=======
       <module fileurl="file://C:\Users\RaosF\AndroidStudioProjects\ProyectoFinal\AutoLog.iml" filepath="C:\Users\RaosF\AndroidStudioProjects\ProyectoFinal\AutoLog.iml" />
       <module fileurl="file://$PROJECT_DIR$/ProyectoFinal.iml" filepath="$PROJECT_DIR$/ProyectoFinal.iml" />
-      <module fileurl="file://C:\Users\PriscilaGonzalez\Desktop\AutoLog\ProyectoFinal.iml" filepath="C:\Users\PriscilaGonzalez\Desktop\AutoLog\ProyectoFinal.iml" />
->>>>>>> 0dd1ebfdf845e0df3660ded370626b157e4b9651
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

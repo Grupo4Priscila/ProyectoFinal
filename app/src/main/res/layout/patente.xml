@@ -10,7 +10,7 @@
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="70dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp">
 
@@ -35,14 +35,15 @@
         <TextView
             android:id="@+id/marcaVehiculo"
             android:layout_width="66dp"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="44dp"
             android:onClick="ShowPopup_datos"
             android:text="marca"
             android:textColor="@android:color/background_dark"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/responsable"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
@@ -51,11 +52,12 @@
         <TextView
             android:id="@+id/responsable"
             android:layout_width="189dp"
-            android:layout_height="30dp"
+            android:layout_height="25dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="nombre"
             android:textColor="@android:color/background_dark"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/patente"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="MissingConstraints" />
@@ -63,7 +65,7 @@
         <TextView
             android:id="@+id/cargoResponsable"
             android:layout_width="186dp"
-            android:layout_height="33dp"
+            android:layout_height="25dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="cargo"

@@ -20,7 +20,7 @@ public class ActivityListPatente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_patente);
 
-        listaVehiculos = (ListView) findViewById(R.id.listapatente);
+        listaVehiculos = (ListView) findViewById(R.id.listpatente);
         lista = new ArrayList<Vehiculo>();
 
 

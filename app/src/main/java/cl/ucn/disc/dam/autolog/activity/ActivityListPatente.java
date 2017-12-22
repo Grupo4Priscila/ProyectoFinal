@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.ArrayList;
@@ -22,14 +23,14 @@ import cl.ucn.disc.dam.autolog.model.Vehiculo;
 public class ActivityListPatente extends AppCompatActivity {
 
     ListView listaVehiculos;
-    ArrayList<Vehiculo> lista;
+ //   ArrayList<Vehiculo> lista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_patente);
 
         listaVehiculos = (ListView) findViewById(R.id.listpatente);
-        lista = new ArrayList<Vehiculo>();
+  //      lista = new ArrayList<Vehiculo>();
 
         Persona p1 = new Persona();
         Vehiculo v2 = new Vehiculo();
@@ -61,23 +62,12 @@ public class ActivityListPatente extends AppCompatActivity {
         v1.setAnio(2017);
         v1.setDescripcion("esta nuevo");
 
-
-        lista.add(v1);
-        lista.add(v2);
-        lista.add(v2);
-        lista.add(v1);
-        lista.add(v2);
-        lista.add(v1);
-        lista.add(v2);
-
-
         //GUARDA EN LA BD la persona y el auto creado
         v1.save();
         p1.save();
         v2.save();
 
-
-
+        List<Vehiculo> lista = SQLite.select().from(Vehiculo.class).queryList();
 
         Adaptador adaptador = new Adaptador(getApplicationContext(),lista);
 

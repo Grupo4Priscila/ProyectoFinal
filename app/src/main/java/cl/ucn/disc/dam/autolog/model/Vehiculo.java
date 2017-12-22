@@ -4,7 +4,11 @@ import com.raizlabs.android.dbflow.annotation.Column;
 import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
 
+
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.io.Serializable;
 
@@ -16,7 +20,7 @@ import lombok.Setter;
  * Created by RaosF on 30-11-2017.
  */
 @Table(database = MyDatabase.class)
-public final class Vehiculo implements Serializable {
+public final class Vehiculo extends BaseModel implements Serializable{
 
     /**
      * Persona responsable;
@@ -60,16 +64,12 @@ public final class Vehiculo implements Serializable {
     @Column
     String descripcion;
 
-  /*  public Vehiculo(Persona responsable, String patente, String marca, String color, String modelo, int anio, String descripcion) {
-        this.responsable = responsable;
-        this.patente = patente;
-        this.marca = marca;
-        this.color = color;
-        this.modelo = modelo;
-        this.anio = anio;
-        this.descripcion = descripcion;
+    @Override
+    public String toString(){
+        return ToStringBuilder
+                .reflectionToString(this,
+                        ToStringStyle.MULTI_LINE_STYLE);
     }
-*/
 }
 
 

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.Button;
-import cl.ucn.disc.dam.autolog.ActivityListPatente;
+
 import cl.ucn.disc.dam.autolog.R;
 
 public class MainActivity extends AppCompatActivity {

@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.PopActivity"></activity>
-        <activity android:name=".ActivityListPatente"></activity>
+        <activity android:name=".activity.ActivityListPatente"></activity>
     </application>
 
 </manifest>

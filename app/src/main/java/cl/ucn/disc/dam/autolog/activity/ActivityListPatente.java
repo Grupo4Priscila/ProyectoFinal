@@ -23,14 +23,12 @@ import cl.ucn.disc.dam.autolog.model.Vehiculo;
 public class ActivityListPatente extends AppCompatActivity {
 
     ListView listaVehiculos;
- //   ArrayList<Vehiculo> lista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_patente);
 
         listaVehiculos = (ListView) findViewById(R.id.listpatente);
-  //      lista = new ArrayList<Vehiculo>();
 
         Persona p1 = new Persona();
         Vehiculo v2 = new Vehiculo();
@@ -70,8 +68,9 @@ public class ActivityListPatente extends AppCompatActivity {
         List<Vehiculo> lista = SQLite.select().from(Vehiculo.class).queryList();
 
         Adaptador adaptador = new Adaptador(getApplicationContext(),lista);
-
         listaVehiculos.setAdapter(adaptador);
+
+
         listaVehiculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

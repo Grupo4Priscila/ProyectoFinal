@@ -19,8 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.PopActivity"></activity>
-        <activity android:name=".activity.ActivityListPatente"></activity>
+        <activity android:name=".activity.PopActivity" />
+        <activity android:name=".activity.ActivityListPatente" />
+        <activity android:name=".activity.RegistroActivity"></activity>
     </application>
 
 </manifest>

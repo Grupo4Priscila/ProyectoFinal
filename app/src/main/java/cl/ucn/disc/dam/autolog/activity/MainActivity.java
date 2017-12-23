@@ -12,6 +12,7 @@ import cl.ucn.disc.dam.autolog.R;
 public class MainActivity extends AppCompatActivity {
 
     Button registrar;
+    Button mostrarReg;
 
 
     @Override
@@ -24,6 +25,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent registrar = new Intent(MainActivity.this, ActivityListPatente.class);
+                startActivity(registrar);
+            }
+        });
+
+
+        mostrarReg = (Button) findViewById(R.id.ultimosregistros);
+        mostrarReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registrar = new Intent(MainActivity.this, RegistroActivity.class);
                 startActivity(registrar);
             }
         });

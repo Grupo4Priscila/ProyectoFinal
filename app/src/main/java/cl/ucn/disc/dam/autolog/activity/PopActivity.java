@@ -86,12 +86,15 @@ public class PopActivity extends AppCompatActivity {
 
     //https://www.youtube.com/watch?v=spASie7u9go
     public void btnRegistrar(View view){
+
+        //TODO: ingresar la fecha del registro tipo date
         Registro registro = new Registro();
         Date fecha = new Date();
         // Logback logger
         org.slf4j.Logger log = LoggerFactory.getLogger(PopActivity.class);
-
-        registro.setFecha(fecha);
+        String fecha2= "fecha";
+       // registro.setFecha(fecha);
+        registro.setFecha(fecha2);
         registro.setVehiculo(vehiculo);
         registro.setPorteria("porteria sur");
         registro.save();

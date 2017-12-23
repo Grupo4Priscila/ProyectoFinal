@@ -20,6 +20,8 @@ import lombok.Setter;
 /**
  * Created by PriscilaGonzalez on 30-11-2017.
  */
+//TODO: cambiar fecha de string a date
+
 @Table(database = MyDatabase.class)
 public class Registro extends BaseModel implements Serializable{
     /**
@@ -52,8 +54,8 @@ public class Registro extends BaseModel implements Serializable{
     @Column
     @Getter
     @Setter
-    Date fecha;
-
+   // Date fecha;
+String fecha;
 
     @Override
     public String toString(){

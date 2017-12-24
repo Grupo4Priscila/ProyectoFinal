@@ -62,7 +62,5 @@ public class PopActivity extends AppCompatActivity {
         pop_localizacion.setText(""+vehiculo.getResponsable().getUnidad());
         pop_tipo.setText(""+vehiculo.getResponsable().getTipo());
 
-
-
     }
 }

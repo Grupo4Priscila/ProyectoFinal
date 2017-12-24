@@ -21,7 +21,6 @@
         </activity>
 
         <activity android:name=".activity.PopActivity"></activity>
-
         <activity android:name=".ActivityListPatente"></activity>
 
     </application>

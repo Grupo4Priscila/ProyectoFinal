@@ -1,11 +1,14 @@
 package cl.ucn.disc.dam.autolog.model;
 
 import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.ForeignKey;
 import com.raizlabs.android.dbflow.annotation.OneToMany;
 import com.raizlabs.android.dbflow.annotation.PrimaryKey;
 import com.raizlabs.android.dbflow.annotation.Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.structure.BaseModel;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 
 import java.io.Serializable;
@@ -93,42 +96,27 @@ public final class Persona extends BaseModel implements Serializable {
     /**
      * Lista de vehiculos que posee la personas
      */
+ /*   @ForeignKey(saveForeignKeyModel = true)
     @Getter
     @Setter
     List<Vehiculo> vehiculos;
-
-  /*  public Persona(String rut, String nombre, String correo, int telefono, int anexo, String unidad, String oficina, String tipo, String cargo, List<Vehiculo> vehiculos) {
-        this.rut = rut;
-        this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.anexo = anexo;
-        this.unidad = unidad;
-        this.oficina = oficina;
-        this.tipo = tipo;
-        this.cargo = cargo;
-        this.vehiculos = vehiculos;
-    }
 */
-    @OneToMany(methods = OneToMany.Method.ALL, variableName = "vehiculos")
+  /*  @OneToMany(methods = OneToMany.Method.ALL, variableName = "vehiculo")
     public List<Vehiculo> oneToManyVehiculos(){
         if(vehiculos == null){
-            vehiculos = SQLite.select()
+           vehiculos = SQLite.select()
                     .from(Vehiculo.class)
-               //     .where(Vehiculo_Table.responsable.getCursorKey().equals(this.rut))
+                    .where(Vehiculo_Table.responsable_rut.eq(this.rut))
                     .queryList();
         }
         return vehiculos;
     }
-@Override
-public boolean save() {
-    boolean res = super.save();
-    if (vehiculos != null) {
-        for (Vehiculo s : vehiculos) {
-            s.setResponsable(this);
-//            s.save();
-        }
+*/
+    @Override
+    public String toString(){
+        return ToStringBuilder
+                .reflectionToString(this,
+                        ToStringStyle.MULTI_LINE_STYLE);
     }
-    return res;
-}
+
 }

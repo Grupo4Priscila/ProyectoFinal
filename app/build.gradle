@@ -91,5 +91,20 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok:1.16.18'
     testImplementation 'org.projectlombok:lombok:1.16.18'
 
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.6'
+
+    // Simple Logging Facade 4 Java
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+
+    // Logback Android Core Module
+    implementation 'com.github.tony19:logback-android-core:1.1.1-6'
+    implementation('com.github.tony19:logback-android-classic:1.1.1-6') {
+        // workaround issue #73
+        exclude group: 'com.google.android', module: 'android'
+    }
+
+    // Logger de Orhan Obut
+    implementation 'com.orhanobut:logger:2.1.1'
 
 }

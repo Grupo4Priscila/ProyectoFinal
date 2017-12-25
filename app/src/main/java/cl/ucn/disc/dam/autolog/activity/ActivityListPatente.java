@@ -1,11 +1,15 @@
 package cl.ucn.disc.dam.autolog.activity;
 
 import android.content.Intent;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.sql.language.Select;
@@ -20,9 +24,11 @@ import cl.ucn.disc.dam.autolog.model.Persona;
 import cl.ucn.disc.dam.autolog.model.Registro;
 import cl.ucn.disc.dam.autolog.model.Vehiculo;
 
-public class ActivityListPatente extends AppCompatActivity {
+public class ActivityListPatente extends AppCompatActivity  {
 
     ListView listaVehiculos;
+    List<Vehiculo> lista;
+    Adaptador adaptador;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +71,9 @@ public class ActivityListPatente extends AppCompatActivity {
         p1.save();
         v2.save();
 
-        List<Vehiculo> lista = SQLite.select().from(Vehiculo.class).queryList();
+        lista = SQLite.select().from(Vehiculo.class).queryList();
 
-        Adaptador adaptador = new Adaptador(getApplicationContext(),lista);
+        adaptador = new Adaptador(getApplicationContext(),lista);
         listaVehiculos.setAdapter(adaptador);
 
 
@@ -81,6 +87,58 @@ public class ActivityListPatente extends AppCompatActivity {
                 startActivity(Siguiente);
             }
         });
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        getMenuInflater().inflate(R.menu.menu_listpatente, menu);
+
+        MenuItem search = menu.findItem(R.id.app_bar_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
+        searchView.setOnQueryTextListener(this);
+        return true;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Called when the user submits the query. This could be due to a key press on the
+     * keyboard or due to pressing a submit button.
+     * The listener can override the standard behavior by returning true
+     * to indicate that it has handled the submit request. Otherwise return false to
+     * let the SearchView handle the submission by launching any associated intent.
+     *
+     * @param query the query text that is to be submitted
+     * @return true if the query has been handled by the listener, false to let the
+     * SearchView perform the default action.
+     */
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    /**
+     * Called when the query text is changed by the user.
+     *
+     * @param newText the new content of the query text field.
+     * @return false if the SearchView should perform the default action of showing any
+     * suggestions if available, true if the action was handled by the listener.
+     */
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        newText = newText.toLowerCase();
+        ArrayList<Vehiculo> newList = new ArrayList<>();
+        for (Vehiculo vehiculo: lista){
+            String name = vehiculo.getPatente().toLowerCase();
+            if(name.contains(newText)){
+                newList.add(vehiculo);
+            }
+        }
 
     }
 }

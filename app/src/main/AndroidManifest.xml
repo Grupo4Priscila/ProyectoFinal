@@ -19,16 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
 
-        <activity android:name=".activity.PopActivity"></activity>
-        <activity android:name=".ActivityListPatente"></activity>
-
-=======
         <activity android:name=".activity.PopActivity" />
         <activity android:name=".activity.ActivityListPatente" />
         <activity android:name=".activity.RegistroActivity"></activity>
->>>>>>> f0d4d1867e2158ca05b5f6a770e4c94c5546697f
+
     </application>
 
 </manifest>

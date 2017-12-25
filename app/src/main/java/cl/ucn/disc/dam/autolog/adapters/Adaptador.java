@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
@@ -21,10 +22,10 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class Adaptador extends BaseAdapter {
+public class Adaptador extends ArrayAdapter<Vehiculo> {
 
     Context context;
-    List<Vehiculo> vehiculos;
+    List<Vehiculo> vehiculos = new ArrayList<>();
 
     static class ViewHolder {
         private TextView patente ;
@@ -41,8 +42,8 @@ public class Adaptador extends BaseAdapter {
     }
 
     public Adaptador(final Context context, List<Vehiculo> lista) {
-        this.context = context;
-        vehiculos = lista;
+        super(context, 0, lista);
+
     }
 
     /**
@@ -63,7 +64,7 @@ public class Adaptador extends BaseAdapter {
      * @return The data at the specified position.
      */
     @Override
-    public Object getItem(int position) {
+    public Vehiculo getItem(int position) {
         return vehiculos.get(position);
     }
 

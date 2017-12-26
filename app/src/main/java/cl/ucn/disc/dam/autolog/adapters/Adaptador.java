@@ -4,8 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.raizlabs.android.dbflow.structure.BaseModel;
@@ -22,10 +25,24 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Slf4j
-public class Adaptador extends ArrayAdapter<Vehiculo> {
+public class Adaptador extends BaseAdapter implements Filterable {
 
     Context context;
-    List<Vehiculo> vehiculos = new ArrayList<>();
+    List<Vehiculo> vehiculos  = new ArrayList<>();
+
+    /**
+     * <p>Returns a filter that can be used to constrain data with a filtering
+     * pattern.</p>
+     * <p>
+     * <p>This method is usually implemented by {@link Adapter}
+     * classes.</p>
+     *
+     * @return a filter used to constrain data
+     */
+    @Override
+    public Filter getFilter() {
+        return null;
+    }
 
     static class ViewHolder {
         private TextView patente ;
@@ -41,9 +58,9 @@ public class Adaptador extends ArrayAdapter<Vehiculo> {
         }
     }
 
-    public Adaptador(final Context context, List<Vehiculo> lista) {
-        super(context, 0, lista);
-
+    public Adaptador(final Context context, ArrayList<Vehiculo> lista) {
+        this.context = context;
+        vehiculos = lista;
     }
 
     /**
@@ -121,6 +138,14 @@ public class Adaptador extends ArrayAdapter<Vehiculo> {
 
 
         return vista;
+
+    }
+
+
+    public void setFilter(ArrayList<Vehiculo> listavehiculo){
+        this.vehiculos = new ArrayList<>();
+        this.vehiculos.addAll(listavehiculo);
+        notifyDataSetChanged();
 
     }
 

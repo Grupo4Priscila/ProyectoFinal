@@ -5,11 +5,17 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
+
+import android.app.SearchManager;
+import android.widget.SearchView.OnQueryTextListener;
 
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.sql.language.Select;
@@ -24,11 +30,16 @@ import cl.ucn.disc.dam.autolog.model.Persona;
 import cl.ucn.disc.dam.autolog.model.Registro;
 import cl.ucn.disc.dam.autolog.model.Vehiculo;
 
-public class ActivityListPatente extends AppCompatActivity  {
+public class ActivityListPatente extends AppCompatActivity implements SearchView.OnQueryTextListener {
+
 
     ListView listaVehiculos;
-    List<Vehiculo> lista;
     Adaptador adaptador;
+    ArrayList<Vehiculo> lista;
+
+
+    private String keyword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,10 +82,11 @@ public class ActivityListPatente extends AppCompatActivity  {
         p1.save();
         v2.save();
 
-        lista = SQLite.select().from(Vehiculo.class).queryList();
+        lista = new ArrayList(SQLite.select().from(Vehiculo.class).queryList());
 
         adaptador = new Adaptador(getApplicationContext(),lista);
         listaVehiculos.setAdapter(adaptador);
+
 
 
         listaVehiculos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -91,20 +103,34 @@ public class ActivityListPatente extends AppCompatActivity  {
     }
 
     @Override
-    public boolean onCreateOptionsMenu (Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu){
+        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_listpatente, menu);
 
-        MenuItem search = menu.findItem(R.id.app_bar_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(search);
+        MenuItem search_item = menu.findItem(R.id.app_bar_search);
+
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(search_item);
+        searchView.setFocusable(false);
+        searchView.setQueryHint("Search");
+
         searchView.setOnQueryTextListener(this);
+
+        MenuItemCompat.setOnActionExpandListener(search_item, new MenuItemCompat.OnActionExpandListener() {
+            @Override
+            public boolean onMenuItemActionExpand(MenuItem item) {
+                return true;
+            }
+
+            @Override
+            public boolean onMenuItemActionCollapse(MenuItem item) {
+                adaptador.setFilter(lista);
+                return true;
+            }
+        });
+
         return true;
-
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        return super.onOptionsItemSelected(item);
-    }
 
     /**
      * Called when the user submits the query. This could be due to a key press on the
@@ -119,6 +145,7 @@ public class ActivityListPatente extends AppCompatActivity  {
      */
     @Override
     public boolean onQueryTextSubmit(String query) {
+
         return false;
     }
 
@@ -131,14 +158,35 @@ public class ActivityListPatente extends AppCompatActivity  {
      */
     @Override
     public boolean onQueryTextChange(String newText) {
-        newText = newText.toLowerCase();
-        ArrayList<Vehiculo> newList = new ArrayList<>();
-        for (Vehiculo vehiculo: lista){
-            String name = vehiculo.getPatente().toLowerCase();
-            if(name.contains(newText)){
-                newList.add(vehiculo);
-            }
+
+        try{
+            ArrayList<Vehiculo> listaFiltrada = filter(lista, newText );
+            adaptador.setFilter(listaFiltrada);
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
+        return false;
+    }
+
+    public ArrayList<Vehiculo> filter(ArrayList<Vehiculo> vehiculos, String texto){
+        ArrayList<Vehiculo> listaFiltrada = new ArrayList<>();
+
+        try{
+            texto.toLowerCase();
+            for(Vehiculo vehiculo: vehiculos){
+                String vehiculo2 = vehiculo.getPatente().toLowerCase();
+
+                if(vehiculo2.contains(texto)){
+                    listaFiltrada.add(vehiculo);
+                }
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return listaFiltrada;
     }
 }

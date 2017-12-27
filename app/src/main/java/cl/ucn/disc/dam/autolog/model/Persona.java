@@ -15,6 +15,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import cl.ucn.disc.dam.autolog.dao.MyDatabase;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +28,6 @@ import lombok.Setter;
 //@Builder
 public final class Persona extends BaseModel implements Serializable {
 
-    //TODO:: corregir la lista de vehiculos one to many!!!!
     /**
      * Rut (identificador) de la persona
      */
@@ -93,25 +93,7 @@ public final class Persona extends BaseModel implements Serializable {
     @Setter
     @Column
     String cargo;
-    /**
-     * Lista de vehiculos que posee la personas
-     */
- /*   @ForeignKey(saveForeignKeyModel = true)
-    @Getter
-    @Setter
-    List<Vehiculo> vehiculos;
-*/
-  /*  @OneToMany(methods = OneToMany.Method.ALL, variableName = "vehiculo")
-    public List<Vehiculo> oneToManyVehiculos(){
-        if(vehiculos == null){
-           vehiculos = SQLite.select()
-                    .from(Vehiculo.class)
-                    .where(Vehiculo_Table.responsable_rut.eq(this.rut))
-                    .queryList();
-        }
-        return vehiculos;
-    }
-*/
+
     @Override
     public String toString(){
         return ToStringBuilder

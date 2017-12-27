@@ -58,17 +58,17 @@ public class ActivityListPatente extends AppCompatActivity implements SearchView
         p1.setUnidad("c");
         p1.setOficina("Oficina bonita");
         p1.setCargo("director");
-        p1.setTipo("");
+        p1.setTipo("tipo");
 
         v2.setResponsable(p1);
-        v2.setPatente("bbbb00");
+        v2.setPatente("CC-LL-23");
         v2.setMarca("toyota");
         v2.setColor("azul");
         v2.setModelo("camioneta");
         v2.setAnio(2017);
         v2.setDescripcion("esta chocado");
 
-        Vehiculo v1 = new Vehiculo();// new Vehiculo(p1,"bbbb00", "toyota", "azul", "caminon", 2017, "esta chocado");
+        Vehiculo v1 = new Vehiculo();
         v1.setResponsable(p1);
         v1.setPatente("BB-BB-00");
         v1.setMarca("Suzuki");
@@ -77,10 +77,20 @@ public class ActivityListPatente extends AppCompatActivity implements SearchView
         v1.setAnio(2017);
         v1.setDescripcion("esta nuevo");
 
+        Vehiculo v3 = new Vehiculo();
+        v3.setResponsable(p1);
+        v3.setPatente("CC-CC-04");
+        v3.setMarca("Suzuki");
+        v3.setColor("Nomade");
+        v3.setModelo("Jeep");
+        v3.setAnio(2017);
+        v3.setDescripcion("esta nuevo");
+
         //GUARDA EN LA BD la persona y el auto creado
         v1.save();
         p1.save();
         v2.save();
+        v3.save();
 
         lista = new ArrayList(SQLite.select().from(Vehiculo.class).queryList());
 

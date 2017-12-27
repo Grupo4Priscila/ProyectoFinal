@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +43,7 @@ public class PopActivity extends AppCompatActivity {
     TextView pop_localizacion;
     TextView pop_tipo;
     TextView pop_cargo;
+    RadioButton sur, norte, principal;
     Vehiculo vehiculo = new Vehiculo();
 
 
@@ -64,6 +67,9 @@ public class PopActivity extends AppCompatActivity {
         pop_fono = (TextView) findViewById(R.id.pop_fono);
         pop_localizacion = (TextView) findViewById(R.id.pop_localizacion);
         pop_tipo = (TextView) findViewById(R.id.pop_tipo);
+        sur = (RadioButton) findViewById(R.id.sur);
+        norte = (RadioButton) findViewById(R.id.norte);
+        principal = (RadioButton) findViewById(R.id.principal);
 
         vehiculo = (Vehiculo) getIntent().getExtras().getSerializable("auto");
 
@@ -96,7 +102,20 @@ public class PopActivity extends AppCompatActivity {
        // registro.setFecha(fecha);
         registro.setFecha(fecha2);
         registro.setVehiculo(vehiculo);
-        registro.setPorteria("porteria sur");
+        if(norte.isChecked()){
+            registro.setPorteria((String) norte.getText());
+        }else {
+            if (sur.isChecked()) {
+                registro.setPorteria((String) sur.getText());
+            } else {
+                if (principal.isChecked()) {
+                    registro.setPorteria((String) principal.getText());
+                }else{
+                    registro.setPorteria("-");
+                }
+            }
+        }
+      //  registro.setPorteria("porteria sur");
         registro.save();
         Toast.makeText(getApplication(),"Ingresado correctamente", Toast.LENGTH_LONG).show();
 

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import org.ocpsoft.prettytime.PrettyTime;
 
 import cl.ucn.disc.dam.autolog.R;
 import cl.ucn.disc.dam.autolog.model.Registro;
@@ -20,6 +21,9 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class AdaptadorRegistro extends BaseAdapter{
+
+    private static final PrettyTime PRETTY_TIME = new PrettyTime();
+
     Context context;
     List<Registro> registros;
 
@@ -30,7 +34,6 @@ public class AdaptadorRegistro extends BaseAdapter{
 
 
         public ViewHolder(View vista){
-            //TODO: ARREGLAR LOS R
             patente = (TextView) vista.findViewById(R.id.patente);
             porteria = (TextView) vista.findViewById(R.id.porteria);
             fecha = (TextView) vista.findViewById(R.id.fecha);
@@ -108,11 +111,13 @@ public class AdaptadorRegistro extends BaseAdapter{
         else{
             holder = (ViewHolder) vista.getTag();
         }
+
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy \nhh:mm:ss");
         Registro objeto = registros.get(position);
         String date = simpleDateFormat.format(objeto.getFecha());
         holder.patente.setText(objeto.getVehiculo().getPatente());
-        holder.fecha.setText(date);
+      //  holder.fecha.setText(date);
+        holder.fecha.setText(PRETTY_TIME.format(objeto.getFecha()));
         holder.porteria.setText(objeto.getPorteria());
         return vista;
 

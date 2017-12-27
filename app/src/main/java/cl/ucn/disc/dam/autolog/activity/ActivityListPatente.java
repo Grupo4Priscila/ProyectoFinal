@@ -17,11 +17,13 @@ import android.widget.Toast;
 import android.app.SearchManager;
 import android.widget.SearchView.OnQueryTextListener;
 
+import com.raizlabs.android.dbflow.sql.language.OrderBy;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 import com.raizlabs.android.dbflow.sql.language.Select;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import cl.ucn.disc.dam.autolog.R;
 import cl.ucn.disc.dam.autolog.activity.PopActivity;

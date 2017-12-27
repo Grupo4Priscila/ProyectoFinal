@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import cl.ucn.disc.dam.autolog.R;
@@ -107,10 +108,11 @@ public class AdaptadorRegistro extends BaseAdapter{
         else{
             holder = (ViewHolder) vista.getTag();
         }
-
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM dd yyyy \nhh-mm-ss");
         Registro objeto = registros.get(position);
+        String date = simpleDateFormat.format(objeto.getFecha());
         holder.patente.setText(objeto.getVehiculo().getPatente());
-        holder.fecha.setText(objeto.getFecha());
+        holder.fecha.setText(date);
         holder.porteria.setText(objeto.getPorteria());
         return vista;
 

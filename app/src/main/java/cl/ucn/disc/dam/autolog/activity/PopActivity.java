@@ -99,8 +99,8 @@ public class PopActivity extends AppCompatActivity {
         // Logback logger
         org.slf4j.Logger log = LoggerFactory.getLogger(PopActivity.class);
         String fecha2= "fecha";
-       // registro.setFecha(fecha);
-        registro.setFecha(fecha2);
+        registro.setFecha(fecha);
+      //  registro.setFecha(fecha2);
         registro.setVehiculo(vehiculo);
         if(norte.isChecked()){
             registro.setPorteria((String) norte.getText());

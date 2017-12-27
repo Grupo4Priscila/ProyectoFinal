@@ -54,8 +54,8 @@ public class Registro extends BaseModel implements Serializable{
     @Column
     @Getter
     @Setter
-   // Date fecha;
-String fecha;
+    Date fecha;
+//String fecha;
 
     @Override
     public String toString(){

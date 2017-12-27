@@ -31,6 +31,7 @@ import cl.ucn.disc.dam.autolog.adapters.Adaptador;
 import cl.ucn.disc.dam.autolog.model.Persona;
 import cl.ucn.disc.dam.autolog.model.Registro;
 import cl.ucn.disc.dam.autolog.model.Vehiculo;
+import cl.ucn.disc.dam.autolog.model.Vehiculo_Table;
 
 public class ActivityListPatente extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
@@ -94,7 +95,7 @@ public class ActivityListPatente extends AppCompatActivity implements SearchView
         v2.save();
         v3.save();
 
-        lista = new ArrayList(SQLite.select().from(Vehiculo.class).queryList());
+        lista = new ArrayList(SQLite.select().from(Vehiculo.class).orderBy(OrderBy.fromProperty(Vehiculo_Table.patente).ascending()).queryList());
 
         adaptador = new Adaptador(getApplicationContext(),lista);
         listaVehiculos.setAdapter(adaptador);

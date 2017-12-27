@@ -108,7 +108,7 @@ public class AdaptadorRegistro extends BaseAdapter{
         else{
             holder = (ViewHolder) vista.getTag();
         }
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM dd yyyy \nhh-mm-ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy \nhh:mm:ss");
         Registro objeto = registros.get(position);
         String date = simpleDateFormat.format(objeto.getFecha());
         holder.patente.setText(objeto.getVehiculo().getPatente());

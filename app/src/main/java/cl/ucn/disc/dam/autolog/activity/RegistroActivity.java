@@ -9,25 +9,31 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.raizlabs.android.dbflow.sql.language.OrderBy;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cl.ucn.disc.dam.autolog.R;
 import cl.ucn.disc.dam.autolog.adapters.Adaptador;
 import cl.ucn.disc.dam.autolog.adapters.AdaptadorRegistro;
 import cl.ucn.disc.dam.autolog.model.Registro;
+import cl.ucn.disc.dam.autolog.model.Registro_Table;
 import cl.ucn.disc.dam.autolog.model.Vehiculo;
+import cl.ucn.disc.dam.autolog.model.Vehiculo_Table;
 
 public class RegistroActivity extends AppCompatActivity {
 
+    ArrayList<Registro> lista;
     ListView listaRegistros;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro);
 
-        List<Registro> lista = SQLite.select().from(Registro.class).queryList();
+        lista = new ArrayList(SQLite.select().from(Registro.class).orderBy(OrderBy.fromProperty(Registro_Table.fecha).descending()).queryList());
+
         if (lista.size()!=0) {
 
             listaRegistros = (ListView) findViewById(R.id.listRegistro);

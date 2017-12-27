@@ -92,8 +92,9 @@ public class PopActivity extends AppCompatActivity {
 
     //https://www.youtube.com/watch?v=spASie7u9go
     public void btnRegistrar(View view){
-
-        //TODO: ingresar la fecha del registro tipo date
+        if(!norte.isChecked() && !sur.isChecked() && !principal.isChecked()){
+            Toast.makeText(getApplication(),"No selecciono porteria", Toast.LENGTH_LONG).show();
+        }else{
         Registro registro = new Registro();
         Date fecha = new Date();
         // Logback logger
@@ -102,20 +103,22 @@ public class PopActivity extends AppCompatActivity {
         registro.setFecha(fecha);
       //  registro.setFecha(fecha2);
         registro.setVehiculo(vehiculo);
-        if(norte.isChecked()){
-            registro.setPorteria((String) norte.getText());
-        }else {
-            if (sur.isChecked()) {
-                registro.setPorteria((String) sur.getText());
+
+            if (norte.isChecked()) {
+                registro.setPorteria((String) norte.getText());
             } else {
-                if (principal.isChecked()) {
-                    registro.setPorteria((String) principal.getText());
-                }else{
-                    registro.setPorteria("-");
+                if (sur.isChecked()) {
+                    registro.setPorteria((String) sur.getText());
+                } else {
+                    if (principal.isChecked()) {
+                        registro.setPorteria((String) principal.getText());
+                    } else {
+                        registro.setPorteria("-");
+                    }
                 }
             }
-        }
-      //  registro.setPorteria("porteria sur");
+
+
         registro.save();
         Toast.makeText(getApplication(),"Ingresado correctamente", Toast.LENGTH_LONG).show();
 
@@ -125,6 +128,6 @@ public class PopActivity extends AppCompatActivity {
     //    long b = new Select(Method.count()).from(Vehiculo.class).count();
     //    long c = new Select(Method.count()).from(Registro.class).count();
 
-
+        }
     }
 }
